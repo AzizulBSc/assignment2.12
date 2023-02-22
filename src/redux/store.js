@@ -1,13 +1,8 @@
-import { applyMiddleware, createStore } from "redux";
-import rootReducer from "./rootReducer";
+// store.js
+import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-// create our first middleware
-const myLogger = (store)=>(next)=>(action)=>{
-  console.log(`Action:${JSON.stringify(action)}`);
-  console.log(`Before:${JSON.stringify(store.getState())}`);
-  return next(action);
-};
-
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(myLogger)));
+import bookingReducer from './bookingReducer';
+// create the store
+const store = createStore(bookingReducer,composeWithDevTools());
 
 export default store;
