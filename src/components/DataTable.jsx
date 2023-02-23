@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function DataTable() {
-  const {bookedFlights} = useSelector(state=>state.bookedFlights);
-console.log(bookedFlights);
+  const bookedFlights = useSelector(state=>state.bookedFlights);
+    console.log(bookedFlights);
   const dispatch = useDispatch();
   const handleDeleteClick = (index) => {
     dispatch({ type: 'REMOVE_FLIGHT', payload: index });
@@ -41,7 +41,7 @@ console.log(bookedFlights);
               <p class="lws-bookedGustes">{book.guests}</p>
             </td>
             <td class="px-6 py-4 text-center">
-              <span class="lws-bookedClass"> {book.class} </span>
+              <span class="lws-bookedClass"> {book.ticketClass} </span>
             </td>
             <td class="px-6 py-4 text-center">
               <div class="flex justify-center gap-4">

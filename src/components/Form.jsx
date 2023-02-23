@@ -63,8 +63,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Form() {
   const dispatch = useDispatch();
-  const {bookedFlights} = useSelector(state=>state.bookedFlights);
-  
+  const bookedFlights = useSelector(state=>state.bookedFlights);
   const [formState, setFormState] = useState({
     from: '',
     to: '',
@@ -93,6 +92,14 @@ export default function Form() {
       [event.target.name]: event.target.value,
     });
   };
+    var isButtonDisabled = false;
+
+    if (bookedFlights.length >= 3) {
+        isButtonDisabled = true;
+    }
+    else {
+        isButtonDisabled = false;
+    }
 
   return (
         <div class="bg-white rounded-md max-w-6xl w-full mx-auto">
@@ -161,7 +168,7 @@ export default function Form() {
             </div>
           </div>
 
-          <button class="addCity" type="submit" id="lws-addCity">
+          <button class="addCity" type="submit" disabled={isButtonDisabled}  id="lws-addCity">
             <svg width="15px" height="15px" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
