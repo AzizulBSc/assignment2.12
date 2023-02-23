@@ -2,69 +2,11 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// function FlightBookingForm() {
-//   return (
-//     <div>
-//       <form onSubmit={handleFormSubmit}>
-//         <div>
-//           <p>Destination From</p>
-//           <div>
-//             <img src="./img/icons/Frame.svg" alt="" />
-//             <select name="from" value={formState.from} onChange={handleFormChange} required>
-//               <option value="" hidden>Please Select</option>
-//               <option>Dhaka</option>
-//               <option>Sylhet</option>
-//               <option>Saidpur</option>
-//               <option>Cox's Bazar</option>
-//             </select>
-//           </div>
-//         </div>
-//         <div>
-//           <p>Destination To</p>
-//           <div>
-//             <img src="./img/icons/Frame.svg" alt="" />
-//             <select name="to" value={formState.to} onChange={handleFormChange} required>
-//               <option value="" hidden>Please Select</option>
-//               <option>Dhaka</option>
-//               <option>Sylhet</option>
-//               <option>Saidpur</option>
-//               <option>Cox's Bazar</option>
-//             </select>
-//           </div>
-//         </div>
-//         <div>
-//           <p>Journey Date</p>
-//           <input type="date" name="date" value={formState.date} onChange={handleFormChange} required />
-//         </div>
-//         <div>
-//           <p>No. of Guests</p>
-//           <input type="number" name="guests" min="1" value={formState.guests} onChange={handleFormChange} required />
-//         </div>
-//         <div>
-//           <p>Ticket Class</p>
-//           <div>
-//             <input type="radio" name="ticketClass" value="Economy" checked={formState.ticketClass === 'Economy'} onChange={handleFormChange} required />
-//             <label htmlFor="economy">Economy</label>
-//           </div>
-//           <div>
-//             <input type="radio" name="ticketClass" value="Business" checked={formState.ticketClass === 'Business'} onChange={handleFormChange} required />
-//             <label htmlFor="business">Business</label>
-//           </div>
-//         </div>
-//         <div>
-//           <button type="submit">Book Flight</button>
-//         </div>
-//       </form>
-//       <ul>
-//         {bookedFlights.map((flight, index) => (
-//           <li key={index}>
-//             <p>From: {flight.from}</p>
-//             <p>To: {flight.to}</p>
-
 export default function Form() {
   const dispatch = useDispatch();
   const bookedFlights = useSelector(state=>state.bookedFlights);
   const [formState, setFormState] = useState({
+    id:Date.now(),
     from: '',
     to: '',
     date: '',
@@ -74,16 +16,15 @@ export default function Form() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(formState);
     dispatch({ type: 'ADD_FLIGHT', payload: formState });
     setFormState({
+      id:Date.now(),
       from: '',
       to: '',
       date: '',
       guests: '',
       ticketClass: '',
     });
-    console.log(bookedFlights);
   };
 
   const handleFormChange = (event) => {

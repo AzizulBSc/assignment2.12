@@ -1,4 +1,4 @@
-import { ADD_FLIGHT, REMOVE_FLIGHT } from "./actionTypes";
+import { ADD_FLIGHT, REMOVE_FLIGHT} from "./actionTypes";
 export const add_flight = (flightData)=> {
     return {
       type: ADD_FLIGHT,

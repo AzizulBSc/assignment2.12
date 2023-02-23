@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function DataTable() {
   const bookedFlights = useSelector(state=>state.bookedFlights);
-    console.log(bookedFlights);
   const dispatch = useDispatch();
   const handleDeleteClick = (index) => {
     dispatch({ type: 'REMOVE_FLIGHT', payload: index });
@@ -45,7 +44,7 @@ export default function DataTable() {
             </td>
             <td class="px-6 py-4 text-center">
               <div class="flex justify-center gap-4">
-                <button class="lws-remove" onClick={() => handleDeleteClick(index)}>
+                <button class="lws-remove" onClick={() => handleDeleteClick(book.id)}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
